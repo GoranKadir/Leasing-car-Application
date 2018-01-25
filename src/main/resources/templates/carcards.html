@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Hello World!</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+	integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+	crossorigin="anonymous" />
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<!-- Website CSS style -->
+<!-- <link th:href="@{/css/}" rel="stylesheet" />
+ -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Passion+One'
+	rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Oxygen'
+	rel='stylesheet' type='text/css' />
+
+<style type="text/css">
+
+.jumbotron {
+	margin-top: 20px;
+	background-image: url("http://www.sub5zero.com/wp-content/uploads/2016/11/car-leasing.jpg");
+	background-size: cover;
+    background-position: 20% 40%;
+	color: red;
+	opacity: 0.7;
+	text-align: center;
+	border: solid 3px black;
+}
+</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="jumbotron">
+		
+  <h1 class="display-7" style="font-weight: 500;">Welcome to Goran super car</h1>
+  <p style="color: black; font-weight: 500;">Here is the best company in the world, with the best qualiy to leasing a car.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Read more</a>
+</div>
+
+      <!-- Team Members Row -->
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 text-center mb-4">
+         <a th:href="@{/cars}"><img class="rounded-circle img-fluid d-block mx-auto" src="https://d30y9cdsu7xlg0.cloudfront.net/png/506621-200.png" alt="" /> </a>
+          <h3>New cars</h3>
+          <p>Click on the picture to go forward to our cars</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 text-center mb-4">
+         <a href="#"><img class="rounded-circle img-fluid d-block mx-auto" src="https://d30y9cdsu7xlg0.cloudfront.net/png/54657-200.png" alt="" /></a>
+          <h3>Old car</h3>
+          <p>Click on the picture to go forward to our cars</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 text-center mb-4">
+          <a th:href="@{/profile}"><img class="rounded-circle img-fluid d-block mx-auto" src="https://i.pinimg.com/474x/81/c1/ea/81c1ea740b01ffcc885cb7e66428f37c--pcc-icons.jpg" alt="" /></a>
+          <h3>About us</h3>
+          <p>We are world biggest company with the best prices on the market</p>
+        </div> 
+      </div>
+	</div>
+	<!-- Container -->
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+		integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+		crossorigin="anonymous"></script>
+</body>
+</html>
