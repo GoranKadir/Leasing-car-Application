@@ -11,7 +11,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
@@ -24,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 import com.gorankadir.se.entities.Car;
 import com.gorankadir.se.entities.Customer;
 import com.gorankadir.se.repository.CarRepository;
+import com.gorankadir.se.repository.CustomerRepository;
 
 @Controller
 public class PagesController {
@@ -31,21 +33,24 @@ public class PagesController {
 	@Autowired
 	CarRepository carRepository;
 
+	@Autowired
+	CustomerRepository customerRepository;
+
 	@RequestMapping(value = "/cars")
-    public String messages(HttpServletRequest req, Model model) {
+    public String showCars(HttpServletRequest req, Model model) {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Car[]> cars = restTemplate.getForEntity("http://localhost:8080/api/cars", Car[].class);
         model.addAttribute("cars", cars.getBody());
         return "cars";
     }
 	
-	@RequestMapping("/admin")
-	public String getCustomers(Model model) {
-		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<Customer[]> customers = restTemplate.getForEntity("http://localhost:8080/api/customers",
-				Customer[].class);
-		model.addAttribute("customers", customers.getBody());
-		return "admin";
+	@RequestMapping("/profile")
+	public String profile(Model model){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		Customer customer = customerRepository.findByUsername(username);
+		model.addAttribute("info", customer);
+		return "profile";
 	}
-		
+			
 }

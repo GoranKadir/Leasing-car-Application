@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Hello World!</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+	integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+	crossorigin="anonymous" />
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<!-- Website CSS style -->
+<link th:href="@{/css/}" rel="stylesheet" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Passion+One'
+	rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Oxygen'
+	rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Car Name</th>
+				<th scope="col">Color</th>
+				<th scope="col">pic name</th>
+				<th scope="col">id</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="car : ${cars}">
+				<td scope="col" th:text="*{car.carName}"></td>
+				<td scope="col" th:text="*{car.color}"></td>
+				<td scope="col" th:text="*{car.picname}"></td>
+				<td scope="col" th:text="*{car.carid}"></td>
+				<td scope="col">
+					<form action="#"
+						th:action="@{'/admin/deletecar/{id}'(id=${car.carid})}"
+						th:method="delete">
+						<input type="hidden" name="_method" value="delete" />
+						<button class="btn btn-primary" type="submit" id="submitButton">Delete</button>
+					</form>
+				</td>
+				<td>
+			
+				  <p data-placement="top" data-toggle="tooltip" title="Edit">
+				  	<button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
+				  		<span class="glyphicon glyphicon-pencil"></span>
+				  	</button>
+				   </p>
+				   
+				</td>	
+		<form>	
+		<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+      </div>
+          <div class="modal-body">
+          <div class="form-group">
+        <input class="form-control " type="text" placeholder="car name" />
+        </div>
+        <div class="form-group">
+        
+        <input class="form-control " type="text" placeholder="color" />
+        </div>
+        <div class="form-group">
+        <input class="form-control " type="text" placeholder="pic name" />
+        </div>
+      </div>
+          <div class="modal-footer ">
+       <input type="hidden" name="_method" value="post" />
+						<button class="btn btn-primary" type="submit" id="submitButton">Upddate</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+    </form>	
+
+			</tr>
+		</tbody>
+	</table>
+
+	<div>
+		<h2 class="col-md">Add new clothes to the shop</h2>
+	</div>
+	<form class="col-md-12" th:object="${newcars}" method="post"
+		th:action="@{/admin/showcars}">
+		<div class="row">
+			<div class="col-md-3 mb-3">
+				<label for="validationDefault01">Car name</label> <input
+					th:field="*{carName}" type="text" class="form-control"
+					id="validationDefault01" placeholder="Brand name" required="true" />
+				<div class="invalid-feedback">Please provide a valid city.</div>
+			</div>
+			<div class="col-md-3 mb-3">
+				<label for="validationDefault02">Color</label> <input
+					th:field="*{color}" type="text" class="form-control"
+					id="validationDefault02" placeholder="Type" required="true" />
+				<div class="invalid-feedback">Please provide a valid city.</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 mb-3">
+				<label for="validationDefault04">Picture url</label> <input
+					th:field="*{picname}" type="text" class="form-control"
+					id="validationDefault04" placeholder="pucture url" required="true" />
+				<div class="invalid-feedback">Please provide a valid state.</div>
+			</div>
+		</div>
+
+		<input class="btn btn-primary" type="submit" value="Submit" />
+	</form>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+		integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+		crossorigin="anonymous"></script>
+</body>
+</html>

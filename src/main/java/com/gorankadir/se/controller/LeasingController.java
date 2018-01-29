@@ -47,7 +47,6 @@ public class LeasingController {
 			customer.addCars(car);
 			customerRepository.save(customer);
 		return new ResponseEntity<Void>(header, HttpStatus.CREATED);
-		
 	}
 	
 	@RequestMapping(value = "/cars")

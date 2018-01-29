@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <title>Hello World!</title>
 <link rel="stylesheet"
@@ -12,32 +12,23 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<!-- Website CSS style -->
-<link th:href="@{/css/}" rel="stylesheet" />
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
 
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Passion+One'
+	rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Oxygen'
+	rel='stylesheet' type='text/css' />
 </head>
-
 <body>
 
-	<th:block th:include="navbar"></th:block>
+
+update
 
 
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li class="nav-item"><a class="nav-link active" href="#">Active</a>
-			</li>
-			<li class="nav-item"><a class="nav-link"
-				th:href="@{/admin/showcars}">show cars</a></li>
-			<li class="nav-item"><a class="nav-link" th:href="@{/admin/showusers}">Show all users</a></li>
-			<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
-			</li>
-		</ul>
-	</div>
-	
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script

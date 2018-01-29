@@ -29,6 +29,13 @@
 	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
        <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
     </div>	
+    
+    <div>
+    <p th:text="${info.email}"></p>
+    <p th:text="${info.password}"></p>
+    <p th:text="${info.customerid}"></p>
+   
+    </div>
 
 
 

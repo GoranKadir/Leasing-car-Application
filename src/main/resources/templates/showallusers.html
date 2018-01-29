@@ -17,27 +17,41 @@
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
-
 </head>
-
 <body>
 
-	<th:block th:include="navbar"></th:block>
 
-
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li class="nav-item"><a class="nav-link active" href="#">Active</a>
-			</li>
-			<li class="nav-item"><a class="nav-link"
-				th:href="@{/admin/showcars}">show cars</a></li>
-			<li class="nav-item"><a class="nav-link" th:href="@{/admin/showusers}">Show all users</a></li>
-			<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
-			</li>
-		</ul>
-	</div>
+<table class="table table-striped">
+<thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">password</th>
+      <th scope="col">id</th>
+    </tr>
+  </thead>
+    <tbody>
+        <tr th:each="customer : ${customers}">
+        	 <td scope="col" th:text="*{customer.username}"></td>
+            <td scope="col" th:text="*{customer.email}"></td>
+            <td scope="col" th:text="*{customer.password}"></td>
+            <td scope="col" th:text="*{customer.customerid}"></td>
+           <td th:each="car : ${customer.cars}">
 	
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+								<td th:text="${car.carid}"></td>
+								<td th:text="${car.carName}"></td>
+								<td th:text="${car.picname}"></td>
+								
+								
+						</td>
+            
+        </tr>
+    </tbody>
+</table>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script
