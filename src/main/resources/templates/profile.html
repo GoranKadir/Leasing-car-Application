@@ -23,20 +23,36 @@
 </head>
 <body>
 
-<th:block th:include="navbar"></th:block>
+<div class="container-fluid">
 
-<div th:if="${#httpServletRequest.userPrincipal != null}">
-	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-       <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
-    </div>	
-    
-    <div>
-    <p th:text="${info.email}"></p>
-    <p th:text="${info.password}"></p>
-    <p th:text="${info.customerid}"></p>
-   
-    </div>
+	<th:block th:include="navbar"></th:block>
 
+	<div th:if="${#httpServletRequest.userPrincipal != null}">
+		<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+		<span sec:authentication="principal.authorities">[ROLE_USER,
+			ROLE_ADMIN]</span>
+	</div>
+
+
+	<div th:each="customer : ${info}">
+		<p th:text="*{customer.username}"></p>
+		<p th:text="*{customer.email}"></p>
+		<p th:text="*{customer.password}"></p>
+		<p th:text="*{customer.customerid}"></p>
+		<h3>Info about my car</h3>
+		<div th:each="car : ${customer.cars}">
+		<p th:text="${car.carid}"></p>
+		<p th:text="${car.carName}"></p>
+		<p th:text="${car.color}"></p>
+		
+		</div>
+
+		</div>
+
+
+	
+
+</div>
 
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,13 +65,24 @@ public class AdminController {
 		return new ResponseEntity<Void>(header, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/updatecar/{id}")
-	public ResponseEntity<Void> updateCar(@PathVariable("id") long id, @RequestBody Car car) {
+//	@PutMapping("/updatecar/{id}")
+//	public ResponseEntity<Void> updateCar(@PathVariable("id") long id, @RequestBody Car car) {
+//		car.setCarid(id);
+//		carRepository.saveAndFlush(car);
+//		HttpHeaders header = new HttpHeaders();
+//		return new ResponseEntity<Void>(header, HttpStatus.OK);
+//	}
+	
+	@RequestMapping("/updatecar/{id}")
+	public String editCar(@PathVariable ("id") long id, @ModelAttribute Car car, Model model) {
 		car.setCarid(id);
-		carRepository.saveAndFlush(car);
-		HttpHeaders header = new HttpHeaders();
-		return new ResponseEntity<Void>(header, HttpStatus.OK);
+		model.addAttribute("cars", carRepository.findOne(id));
+		car = carRepository.saveAndFlush(car);
+		return "updatecars";
 	}
+	
+	
+		
 	
 	
 	

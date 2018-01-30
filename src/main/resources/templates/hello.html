@@ -28,19 +28,13 @@
 
 
 
-<th:block th:include="navbar"></th:block>
+	<th:block th:include="navbar"></th:block>
 
     
-   <th:block th:include="carcards"></th:block>
+    <th:block th:include="carcards"></th:block>
     
     
-   
-<div th:if="${#httpServletRequest.userPrincipal != null}">
-	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        <p th:inline="text">[[${#httpServletRequest.isUserInRole("USER")}]]!</p>
-    </div>	
-
-
+  
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
